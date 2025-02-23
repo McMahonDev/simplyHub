@@ -1,19 +1,23 @@
-import { redirect } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 
 interface Locals {
-    user?: {
-        id: string;
-    };
+	user?: {
+		id: string;
+	};
 }
 
 export async function load({ locals, url }: { locals: Locals; url: URL }) {
-    let auth = true;
-    console.log(locals);
-    let id = locals.user?.id;
-	if (!locals?.user && url.pathname !== '/account/login') {
+	let auth: boolean;
+	let id: number;
+	if (!locals?.user) {
 		auth = false;
-        id = undefined;
-        throw redirect(302, '/account/login');
-	} 
-    return { auth, id }
+		id = 0;
+		if (url.pathname !== '/account/login') {
+			throw redirect(302, '/account/login');
+		}
+	} else {
+		auth = true;
+		id = locals.user.id;
+	}
+	return { auth, id };
 }

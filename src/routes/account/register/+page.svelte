@@ -3,10 +3,11 @@
 </script>
 
 <section>
-	<h1>Login</h1>
-	<form use:enhance method="POST" action="?/login">
+	<h1>Register</h1>
+	<form use:enhance method="POST" action="?/createAccount">
 		<input type="email" name="email" placeholder="Email" required />
 		<input type="password" name="password" placeholder="Password" required />
-		<button type="submit">Login</button>
+		<input type="password" name="confirmPassword" placeholder="Confirm Password" required />
+		<button type="submit">Register</button>
 	</form>
 </section>

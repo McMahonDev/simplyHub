@@ -8,9 +8,12 @@ import { user } from '$lib/server/db/schema';
 import jwt from 'jsonwebtoken';
 const { sign } = jwt;
 
-
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }: { locals: { user: any } }) {
+	// Check if the user is already logged in
+	if (locals?.user) {
+		throw redirect(302, '/');
+	}
 	return {
 		props: {
 			user: locals.user
@@ -32,8 +35,6 @@ export const actions = {
 
 		const account = await db.select().from(user).where(eq(user.email, email)).execute();
 		const hashedPassword = hash(password);
-
-        console.log(account);
 		if (account[0] && account[0].password === hashedPassword) {
 			token = sign(
 				{
@@ -60,38 +61,5 @@ export const actions = {
 
 		// redirect the user
 		throw redirect(302, '/');
-	},
-	createAccount: async ({ cookies, request }) => {
-        console.log('createAccount');
-		const data = await request.formData();
-        console.log(data);
-		const email = data.get('email') as string;
-		const password = data.get('password') as string;
-		const confirmPassword = data.get('confirmPassword') as string;
-        console.log(email, password, confirmPassword);
-		if (password !== confirmPassword) {
-			// TODO: add error
-			throw redirect(302, '/account/login');
-		}
-
-		const account = await db.select().from(user).where(eq(user.email, email)).execute();
-        console.log(account);
-		if (account[0]) {
-			// TODO: add error
-			throw redirect(302, '/account/login');
-		}
-
-		const hashedPassword = hash(password);
-		const now = new Date().toISOString();
-        try {
-            await db.insert(user).values({ email, password: hashedPassword, firstName: '', lastName: '', createdAt: now, updatedAt: now }).execute();
-        } catch (error) {
-            console.log(error);
-            
-        }
-		
-
-		// redirect the user
-		throw redirect(302, '/account/login');
 	}
 };

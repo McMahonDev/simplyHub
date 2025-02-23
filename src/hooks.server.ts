@@ -33,6 +33,8 @@ export async function handle({ event, resolve }) {
 		} catch (error) {
 			console.error(error);
 		}
+	} else {
+		event.locals.user = null;
 	}
 
 	return await resolve(event);
