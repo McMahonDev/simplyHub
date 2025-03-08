@@ -5,8 +5,18 @@ import { db } from '$lib/server/db/index';
 import { user } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 
+interface Locals {
+	user: { id: string; email: string } | null;
+}
+
 /** @type {import('@sveltejs/kit').Handle} */
-export async function handle({ event, resolve }) {
+export async function handle({
+	event,
+	resolve
+}: {
+	event: { request: Request; locals: Locals };
+	resolve: Function;
+}) {
 	const { headers } = event.request;
 	const cookies = parse(headers.get('cookie') ?? '');
 	if (cookies.session) {
@@ -41,7 +51,7 @@ export async function handle({ event, resolve }) {
 }
 
 /** @type {import('@sveltejs/kit').GetSession} */
-export async function getSession({ locals }) {
+export async function getSession({ locals }: { locals: locals }) {
 	return {
 		user: locals.user
 	};

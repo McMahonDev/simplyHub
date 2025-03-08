@@ -1,0 +1,410 @@
+:root {
+	/* Define Colors as colors */
+	--green: #7dc95e;
+	--red: #ca2e55;
+	--teal: rgb(32, 247, 229);
+	--black: #000;
+	--darkBlue: #1a1f51;
+	--grey: #393e46;
+	--lightGrey: #eee;
+	--lightGreyAlt: #f4f4f4;
+	--white: #fff;
+	--transparentBlue: rgba(26, 31, 81, 0.17);
+
+	/* Define Color intentions */
+	--primary: var(--teal);
+	--danger: var(--red);
+	--background: var(--white);
+	--backgroundGrey: var(--lightGreyAlt);
+	--textColor: var(--darkBlue);
+	--buttonTextColor: var(--black);
+	--lineColor: var(--transparentBlue);
+	--cardBg: var(--white);
+	--headerBackground: var(--lightGrey);
+	--footerTextColor: var(--lightGrey);
+	--footerBackground: var(--black);
+	--iconColor: var(--darkBlue);
+	--placeholderBackground: var(--lightGreyAlt);
+	--placeholderLineColor: var(--lineColor);
+
+	/* Styles */
+	--line: solid 1px var(--lineColor);
+	--borderRadius: 10px;
+
+	/* Typeography */
+	--headingFont: 'Lexend', sans-serif;
+	--bodyFont: 'Lexend', sans-serif;
+	--baseFontSize: 100%;
+	--h1: 3.052em;
+	--h2: 2.441em;
+	--h3: 1.953em;
+	--h4: 1.563em;
+	--h5: 1.25em;
+	--smallText: 0.8em;
+
+	/* Elevation */
+	--level-1: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	--level-2: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--level-3: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--level-4: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	--level-5: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	--cardShadow: 0 4px 18px 2px rgb(26 31 81 / 0.1);
+
+	/* Layouts */
+	--gridGap: 15px;
+	--containerPadding: 2.5%;
+	--headerHeight: 100px;
+
+	/* Container */
+	--container-width: 100%;
+}
+
+/* From Typescale */
+
+html {
+	font-size: var(--baseFontSize);
+	box-sizing: border-box;
+} /*18px*/
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: var(--bodyFont);
+	font-weight: 400;
+	line-height: 1.75;
+	background: var(--background);
+	color: var(--textColor);
+	scrollbar-gutter: stable;
+}
+
+header {
+	--textColor: var(--black);
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	color: var(--textColor);
+	background-color: var(--headerBackground);
+	box-shadow: var(--level-2);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: var(--headerHeight);
+	padding: 0 var(--containerPadding);
+	z-index: 100;
+}
+header nav a {
+	color: inherit;
+	text-decoration: none;
+}
+header nav a + a {
+	margin-left: 10px;
+}
+main {
+	margin-top: var(--headerHeight);
+}
+footer {
+	background: var(--footerBackground);
+	color: var(--footerTextColor);
+	padding: 3rem var(--containerPadding);
+	text-align: center;
+}
+footer a {
+	color: var(--footerTextColor);
+}
+footer p {
+	max-width: 100%;
+	margin-bottom: 0;
+}
+p {
+	margin-bottom: 1rem;
+	max-width: 40em;
+}
+
+p a,
+blockquote a {
+	color: var(--textColor);
+	text-decoration: none;
+	border-bottom: solid 2px var(--primary);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+	/* margin: 3rem 0 1.38rem; */
+	font-family: var(--headingFont);
+	font-weight: 400;
+	line-height: 1.3;
+	color: var(--textColor);
+}
+
+h1 {
+	margin-top: 0;
+	font-size: var(--h1);
+	font-weight: 800;
+}
+
+h2 {
+	font-size: var(--h2);
+	margin-bottom: 1.38rem;
+}
+
+h3 {
+	font-size: var(--h3);
+}
+
+h4 {
+	font-size: var(--h4);
+}
+
+h5 {
+	font-size: var(--h5);
+}
+
+small,
+.text_small {
+	font-size: var(--smallText);
+}
+/* End TypeScale */
+
+blockquote {
+	/* border: solid 1px var(--darkBlue); */
+	background-color: var(--cardBg);
+	margin: 10px;
+	padding: 2em;
+	box-shadow: var(--level-3);
+}
+
+label {
+	font-size: var(--smallText);
+	/* display: grid; */
+	width: 100px;
+	margin-bottom: 20px;
+}
+
+input,
+textarea {
+	padding: 4px 5px;
+	border: var(--line);
+	border-radius: 4px;
+}
+
+textarea {
+	box-sizing: border-box;
+	width: 100%;
+	height: 5rem;
+}
+
+::-webkit-input-placeholder {
+	color: var(--grey);
+}
+
+::-moz-placeholder {
+	color: var(--grey);
+}
+
+:-ms-input-placeholder {
+	color: var(--grey);
+}
+
+::-ms-input-placeholder {
+	color: var(--grey);
+}
+
+::placeholder {
+	color: var(--grey);
+}
+
+select {
+	border: var(--line);
+}
+
+hr {
+	border-top: var(--line) 0.5px solid;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	color: transparent;
+}
+
+button {
+	--buttonColor: var(--primary);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	color: var(--buttonTextColor);
+	background-color: var(--buttonColor);
+	border: none;
+	border-radius: 10px;
+	padding: 5px 25px;
+	box-shadow: var(--level-1);
+	transition: 0.3s ease-in-out box-shadow;
+}
+
+.ym_back_button {
+	--buttonColor: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	color: var(--buttonTextColor);
+	background-color: var(--buttonColor);
+	border: none;
+	border-radius: 10px;
+	padding: 5px 25px;
+	box-shadow: var(--level-1);
+	transition: 0.3s ease-in-out box-shadow;
+}
+
+button:hover {
+	box-shadow: var(--level-2);
+}
+button:active {
+	box-shadow: none;
+}
+button[disabled] {
+	opacity: 0.4;
+}
+
+button.cancel {
+	--buttonColor: var(--danger);
+	--textColor: white;
+}
+
+button.small {
+	font-size: var(--smallText);
+	/* padding: ; */
+}
+
+/* Layouts */
+
+.layout {
+	padding: calc(3rem + var(--headerHeight)) var(--containerPadding);
+}
+
+.grid {
+	--gridCols: 2;
+	--gridRows: 1;
+	display: block;
+	grid-template-columns: repeat(var(--gridCols), 1fr);
+	grid-template-rows: repeat(var(--gridRows), 1fr);
+	grid-gap: var(--gridGap);
+}
+.cols-3 {
+	--gridCols: 3;
+}
+.cols-4 {
+	--gridCols: 4;
+}
+.cols-12 {
+	--gridCols: 12;
+}
+
+.flex {
+	--justifyContent: space-between;
+	display: block;
+	justify-content: var(--justifyContent);
+	align-items: center;
+	gap: 15px;
+}
+
+.flex-around {
+	--justifyContent: space-around;
+}
+
+@media only screen and (min-width: 500px) {
+	:root {
+		--baseFontSize: 112.5%;
+	}
+	.grid {
+		display: grid;
+	}
+	.flex {
+		display: flex;
+	}
+}
+.fake-logo {
+	font-size: var(--baseFontSize);
+	margin: 0;
+}
+.card {
+	background-color: var(--cardBg);
+	margin: 0;
+	padding: 2em;
+	box-shadow: var(--cardShadow);
+	border-radius: var(--borderRadius);
+}
+
+.card > *:first-child {
+	margin-top: 0;
+}
+.card > *:last-child {
+	margin-bottom: 0;
+}
+
+.split {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: var(--gridGap);
+}
+
+.draggable {
+	--dragLeft: 0px;
+	cursor: col-resize;
+	position: relative;
+	white-space: nowrap;
+	flex-wrap: nowrap;
+	left: var(--dragLeft);
+}
+
+/* backgrounds */
+
+.bg-1 {
+	background: linear-gradient(92.1deg, #109e91 7.36%, #1a1f51 104.21%);
+}
+
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--darkGrey: #222;
+		--cardBg: var(--darkGrey);
+		--background: var(--black);
+		--textColor: var(--lightGrey);
+		--headerBackground: var(--darkGrey);
+		--footerBackground: var(--darkGrey);
+	}
+} */
+.oled {
+	--black: #000;
+	--darkGrey: #222;
+	--cardBg: var(--darkGrey);
+	--background: var(--black);
+	--textColor: var(--lightGrey);
+	--headerBackground: var(--darkGrey);
+	--footerBackground: var(--darkGrey);
+}
+
+@media (min-width: 576px) {
+	:root {
+		--container-width: 525px;
+	}
+}
+@media (min-width: 768px) {
+	:root {
+		--container-width: 705px;
+	}
+}
+@media (min-width: 992px) {
+	:root {
+		--container-width: 945px;
+	}
+}
+@media (min-width: 1200px) {
+	:root {
+		--container-width: 1180px;
+	}
+}
